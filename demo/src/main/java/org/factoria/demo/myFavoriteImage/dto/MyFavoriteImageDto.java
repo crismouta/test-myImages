@@ -10,5 +10,5 @@ public record MyFavoriteImageDto(Long id,
                                  String description,
                                  @NotEmpty(message = "url is required")
                                  String imageUrl,
-                                 UserDto owner) {
+                                 String userName) {
 }

@@ -8,17 +8,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MyFavoriteImageToMyFavoriteImageDtoConverter implements Converter<MyFavoriteImage, MyFavoriteImageDto> {
-
-    private final UserToUserDtoConverter userToUserDtoConverter;
-
-    public MyFavoriteImageToMyFavoriteImageDtoConverter(UserToUserDtoConverter userToUserDtoConverter) {
-        this.userToUserDtoConverter = userToUserDtoConverter;
-    }
-
     @Override
     public MyFavoriteImageDto convert(MyFavoriteImage source) {
         MyFavoriteImageDto myFavoriteImageDto = new MyFavoriteImageDto(source.getId(), source.getTitle(), source.getDescription(), source.getUrl(),
-                source.getOwner() != null ? this.userToUserDtoConverter.convert(source.getOwner()) : null);
+                source.getOwner() != null ? source.getOwner().getName() : null);
         return myFavoriteImageDto;
     }
 }
